@@ -14,9 +14,9 @@ I'd love to hear your ideas to make this CFC better. Please fork and send me a p
 Setup
 -------------------
 
-If you're using the CFC with one pair of public / private keys from reCAPTCHA then feel free to edit the ```init()``` method's argument defaults. Just add your public and private keys and you won't have to ever type them out again when using the other methods of the CFC.
+If you're using the CFC with one pair of public / private keys from reCAPTCHA then feel free to edit the ```init()``` method's argument defaults directly in the CFC. Just add your public and private keys and you won't have to ever type them out again.
 
-If, however, you may need to use multiple pairs of keys, you can set them during use. To do so you'll use the ```init()``` method. *See that method's documentation below.*
+However, you may need to use multiple pairs of keys on your site, you can set them during use by manually calling the ```init()``` method. *See that method's documentation below.*
 
 To use this component, add it to your CF environment like any other component. Then create the CFC object using:
 ```re = new recaptcha();``` or ```re = CreateObject( 'component', 'recaptcha' );```
