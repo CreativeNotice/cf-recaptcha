@@ -146,13 +146,13 @@ component {
 	 * @returntype  String
 	 * @output      true
 	 */
-	public function display( string pub_key, string priv_key, string theme, string lang, numeric tabindex ){
+	public function display( string pub_key, string priv_key, string theme, string lang, numeric tab_index ){
 
 		if( structKeyExists(arguments,'pub_key') )  { this.setApi_key_public( trim(arguments.pub_key) ); }
 		if( structKeyExists(arguments,'priv_key') ) { this.setApi_key_private( trim(arguments.priv_key) ); }
 		if( structKeyExists(arguments,'theme') )    { this.setTheme( trim(arguments.theme) ); }
 		if( structKeyExists(arguments,'lang') )     { this.setLang( trim(arguments.lang) ); }
-		if( structKeyExists(arguments,'tabindex') ) { this.setTab_index( arguments.tabindex ); }
+		if( structKeyExists(arguments,'tab_index') ) { this.setTab_index( arguments.tab_index ); }
 
 		var error     = ( len(this.getErr_code()) > 0 ) ? '&error='& this.getErr_code() : '';
 		var noscript  = this.getHTTP_type() & this.getNoScript_url() &'?k='& this.getApi_key_public() & error;
@@ -187,6 +187,9 @@ component {
 	 * @returntype  Boolean
 	 */
 	public function check( string pub_key, string priv_key ){
+
+		if( structKeyExists(arguments,'pub_key') )  { this.setApi_key_public( trim(arguments.pub_key) ); }
+		if( structKeyExists(arguments,'priv_key') ) { this.setApi_key_private( trim(arguments.priv_key) ); }
 
 		if( structKeyExists(form, 'recaptcha_challenge_field') && structKeyExists(form, 'recaptcha_response_field') ){
 
