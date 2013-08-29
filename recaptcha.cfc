@@ -143,7 +143,7 @@ component {
 	/**
 	 * @displayname Display
 	 * @description Will output, or return string, the reCAPTCHA html.
-	 * @returntype  String
+	 * @returnType  String
 	 * @output      true
 	 */
 	public function display( string pub_key, string priv_key, string theme, string lang, numeric tab_index ){
@@ -184,13 +184,12 @@ component {
 	/**
 	 * @displayname Check
 	 * @description Will check if the reCAPTCHA was filled out and then send a check request to the API endpoint. We'll return false, and set the error if needed.
-	 * @returntype  Boolean
+	 * @returnType  Boolean
 	 */
 	public function check( string pub_key, string priv_key ){
 
 		if( structKeyExists(arguments,'pub_key') )  { this.setApi_key_public( trim(arguments.pub_key) ); }
 		if( structKeyExists(arguments,'priv_key') ) { this.setApi_key_private( trim(arguments.priv_key) ); }
-
 		if( structKeyExists(form, 'recaptcha_challenge_field') && structKeyExists(form, 'recaptcha_response_field') ){
 
 			var h = new http();
@@ -211,13 +210,13 @@ component {
 
 				if( response[1] == 'true' ){
 
-					return true;
+					return TRUE;
 
 				}else{
 
 					// reCAPTCHA returned an error so we'll set the error code verbatim
 					this.setErr_code( response[2] );
-					return false;
+					return FALSE;
 
 				}
 
@@ -225,12 +224,12 @@ component {
 
 				// we got a bad HTTP status code so we'll just say reCAPTCHA was unreachable
 				this.setErr_code( 'recaptcha-not-reachable' );
-				return false;
+				return FALSE;
 			}
 
 		}else{
 
-			return false;
+			return FALSE;
 		}
 	};
 }
